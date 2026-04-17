@@ -1,78 +1,83 @@
-import Image from "next/image";
-import { Geist, Geist_Mono } from "next/font/google";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
+import NavButton from '@/components/home/NavButton';
+import Layout from '@/components/Layout';
+import Image from 'next/image';
+import { ReactNode } from 'react';
 export default function Home() {
-  return (
-    <div
-      className={`${geistSans.className} ${geistMono.className} flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black`}
-    >
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the index.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs/pages/getting-started?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+    return (
+        <>
+            <nav className="p-15 bg-black flex flex-col gap-11.5 items-center text-center max-sm:p-12">
+                <h1 className="text-fiftysix text-white font-thin mx-auto">
+                    <span className="font-bold ">세상의 모든 정보</span>를<br /> 쉽게 저장하고{' '}
+                    <br className="hidden max-sm:block" />
+                    관리해 보세요
+                </h1>
+                <NavButton>링크 추가하기</NavButton>
+            </nav>
+            <div className="py-12.5  flex justify-center items-center max-sm:flex-col">
+                <div className="py-32.5 flex gap-6 flex-col items-start justify-center max-sm:py-0 max-sm:items-center ">
+                    <h1 className="text-fourtytwo font-bold text-gray-1 max-sm:text-center ">
+                        원하는 링크를
+                        <br />
+                        저장하세요
+                    </h1>
+                    <p className="text-gray-7 font-normal text-sixteen max-sm:text-center">
+                        나중에 읽고 싶은 글, 다시 보고 싶은 영상, <br /> 사고 싶은 옷, 기억하고 싶은 모든 것을 <br /> 한
+                        공간에 저장하세요.
+                    </p>
+                </div>
+                <div className="relative w-full h-[450px] max-w-[696px]  max-md:h-[278px] max-md:max-w-[430px] max-sm:h-[215px] max-sm:max-w-[325px] ">
+                    <Image src="/home/images/main-image-one.png" alt="이미지1" fill />
+                </div>
+            </div>
+            <div className="py-12.5 flex justify-center bg-gray-F items-center max-sm:flex-col">
+                <div className="relative w-full max-w-[729px] h-[450px] max-md:max-w-[403px] max-md:h-[280px] max-sm:max-w-[325px] max-sm:h-[200px] ">
+                    <Image src="/home/images/main-image-two-new.png" alt="이미지2" fill />
+                </div>
+                <div className="py-35.25 flex flex-col gap-6 items-start justify-center max-sm:py-0 max-sm:items-center">
+                    <h1 className="font-bold text-fourtytwo text-gray-1 max-sm:text-center">
+                        링크를 폴더로
+                        <br />
+                        관리하세요
+                    </h1>
+                    <p className="font-normal text-sixteen text-gray-7 max-sm:text-center ">
+                        나만의 폴더를 무제한으로 만들고
+                        <br />
+                        다양하게 활용할 수 있습니다.
+                    </p>
+                </div>
+            </div>
+            <div className="py-12.5 flex justify-center items-center max-sm:flex-col">
+                <div className="py-32.5 flex flex-col gap-4 justify-center  max-sm:py-0 max-sm:items-center">
+                    <h1 className="font-bold text-fourtytwo text-gray-1 max-sm:text-center">
+                        저장한 링크를 <br />
+                        공유해 보세요.
+                    </h1>
+                    <p className="font-normal text-sixteen text-gray-7 max-sm:text-center">
+                        여러 링크를 폴더에 담고 공유할 수 있습니다. <br />
+                        가족, 친구, 동료들에게 쉽고 빠르게 링크를 <br />
+                        공유해 보세요.
+                    </p>
+                </div>
+                <div className="relative w-full max-w-[729px] h-[450px] max-md:max-w-[403px] max-md:h-[280px] max-sm:max-w-[325px] max-sm:h-[200px] ">
+                    <Image src="/home/images/main-image-three.png" alt="이미지3" fill />
+                </div>
+            </div>
+            <div className="py-12.5 flex justify-center bg-gray-F gap-14.5 items-center max-md:gap-10 max-sm:gap-6 max-sm:flex-col">
+                <div className="py-38 flex flex-col gap-6 items-start justify-center  max-sm:py-0 max-sm:items-center">
+                    <h1 className="font-bold text-fourtytwo text-gray-1 max-sm:text-center">
+                        저장한 링크를
+                        <br />
+                        검색해 보세요
+                    </h1>
+                    <p className="font-normal text-sixteen text-gray-7 max-sm:text-center">
+                        중요한 정보들을 검색으로 쉽게 찾아보세요.
+                    </p>
+                </div>
+                <div className="relative w-full max-w-[729px] h-[450px] max-md:max-w-[403px] max-md:h-[280px] max-sm:max-w-[325px] max-sm:h-[200px] ">
+                    <Image src="/home/images/main-image-four.png" alt="이미지4" fill />
+                </div>
+            </div>
+        </>
+    );
 }
+Home.getLayout = (page: ReactNode) => <Layout>{page}</Layout>;

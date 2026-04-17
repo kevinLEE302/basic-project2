@@ -1,26 +1,172 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@font-face {
+    font-family: 'Pretendard';
+    src: url('/fonts/Pretendard-Thin.otf') format('opentype');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@font-face {
+    font-family: 'Pretendard';
+    src: url('/fonts/Pretendard-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
 }
 
+@font-face {
+    font-family: 'Pretendard';
+    src: url('/fonts/Pretendard-Medium.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('/fonts/Pretendard-SemiBold.otf') format('opentype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('/fonts/Pretendard-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+@theme {
+    --font-pretendard: 'Pretendard';
+    --color-black: #111111;
+    --color-white: #ffffff;
+    --color-point: #6d6afe;
+    --color-gray-1: #1e1e1e;
+    --color-gray-2: #2c2c2c;
+    --color-gray-3: #383838;
+    --color-gray-4: #444444;
+    --color-gray-7: #757575;
+    --color-gray-B: #b3b3b3;
+    --color-gray-D: #d9d9d9;
+    --color-gray-E: #e6e6e6;
+    --color-gray-F: #f5f5f5;
+    --breakpoint-sm: 375px; /* 모바일 */
+    --breakpoint-md: 768px; /* 태블릿 */
+    --breakpoint-lg: 1440px; /* PC */
+}
+
+@layer components {
+    .text-twelve {
+        @apply leading-[120%] text-xs;
+    }
+    .text-fourteen {
+        @apply leading-[120%] text-sm;
+    }
+    .text-sixteen {
+        @apply leading-[120%] text-base;
+        @media (max-width: 768px) {
+            @apply text-[14px];
+        }
+    }
+    .text-eighteen {
+        @apply leading-[120%] text-lg;
+        @media (max-width: 375px) {
+            @apply text-[14px];
+        }
+    }
+    .text-twenty {
+        @apply leading-[120%] text-xl;
+    }
+    .text-twentyfour {
+        @apply leading-[120%] text-2xl;
+    }
+    .text-thirtytwo {
+        @apply leading-[120%] text-[32px];
+    }
+    .text-fourtytwo {
+        @apply leading-[120%] text-[42px];
+
+        @media (max-width: 768px) {
+            @apply text-[32px];
+        }
+
+        @media (max-width: 375px) {
+            @apply text-[24px];
+        }
+    }
+    .text-fourtyeight {
+        @apply leading-[120%] text-5xl;
+    }
+    .text-fiftysix {
+        @apply leading-[120%] text-[56px];
+
+        @media (max-width: 768px) {
+            @apply text-[48px];
+        }
+
+        @media (max-width: 375px) {
+            @apply text-[32px];
+        }
+    }
+}
+@layer base {
+    /* 거의 모든 프로젝트에 들어가는 것들 */
+
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box; /* 패딩이 너비에 포함되게 */
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    html {
+        font-size: 16px; /* rem 기준점 */
+    }
+
+    body {
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased; /* Mac에서 폰트 선명하게 */
+        font-family: var(--font-pretendard), sans-serif;
+    }
+
+    video,
+    svg {
+        display: block; /* 이미지 아래 생기는 이상한 여백 제거 */
+        max-width: 100%; /* 부모 넘치지 않게 */
+    }
+
+    button {
+        cursor: pointer;
+        border: none;
+        background: none;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    ul,
+    ol {
+        list-style: none;
+    }
+
+    input,
+    textarea,
+    select {
+        font: inherit; /* 인풋 폰트가 body랑 달라지는 현상 방지 */
+    }
+}
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    :root {
+        --background: #0a0a0a;
+        --foreground: #ededed;
+    }
 }
