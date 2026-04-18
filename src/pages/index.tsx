@@ -1,8 +1,10 @@
 import NavButton from '@/components/home/NavButton';
 import Layout from '@/components/Layout';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import { ReactNode } from 'react';
 export default function Home() {
+    const router = useRouter();
     return (
         <>
             <nav className="p-15 bg-black flex flex-col gap-11.5 items-center text-center max-sm:p-12">
@@ -11,7 +13,13 @@ export default function Home() {
                     <br className="hidden max-sm:block" />
                     관리해 보세요
                 </h1>
-                <NavButton>링크 추가하기</NavButton>
+                <NavButton
+                    onClick={() => {
+                        router.push('/login');
+                    }}
+                >
+                    링크 추가하기
+                </NavButton>
             </nav>
             <div className="py-12.5  flex justify-center items-center max-sm:flex-col">
                 <div className="py-32.5 flex gap-6 flex-col items-start justify-center max-sm:py-0 max-sm:items-center ">
