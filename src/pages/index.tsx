@@ -15,7 +15,12 @@ export default function Home() {
                 </h1>
                 <NavButton
                     onClick={() => {
-                        router.push('/login');
+                        const exist = localStorage.getItem('token');
+                        if (exist) {
+                            router.push('/links');
+                        } else {
+                            router.push('/login');
+                        }
                     }}
                 >
                     링크 추가하기

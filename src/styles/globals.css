@@ -150,6 +150,9 @@
         border: none;
         background: none;
     }
+    button:disabled {
+        cursor: default;
+    }
 
     a {
         text-decoration: none;
