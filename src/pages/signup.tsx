@@ -2,7 +2,7 @@ import AuthButton from '@/components/auth/AuthButton';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { SignUpFormData, SignUpSchema } from './schemas/auth';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -118,10 +118,10 @@ export default function SignupPage() {
                                     사용 가능한 이메일 입니다
                                 </p>
                             )}
-                            {checkEmail === 'no' && (
+                            {!check && checkEmail === 'no' && (
                                 <p className="text-system-error text-fourteen font-normal">중복된 이메일입니다</p>
                             )}
-                            {errors.email && (
+                            {!check && errors.email && (
                                 <p className="text-system-error text-fourteen font-normal">{errors.email.message}</p>
                             )}
                             {check && <p className="text-system-error text-fourteen font-normal">중복 확인 해주세요</p>}

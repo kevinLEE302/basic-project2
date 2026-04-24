@@ -1,5 +1,8 @@
 @import 'tailwindcss';
 
+/* global.css */
+@plugin 'tailwind-scrollbar-hide';
+
 @font-face {
     font-family: 'Pretendard';
     src: url('/fonts/Pretendard-Thin.otf') format('opentype');
@@ -82,12 +85,18 @@
     }
     .text-twenty {
         @apply leading-[120%] text-xl;
+        @media (max-width: 375px) {
+            @apply text-[14px];
+        }
     }
     .text-twentyfour {
         @apply leading-[120%] text-2xl;
     }
     .text-thirtytwo {
         @apply leading-[120%] text-[32px];
+        @media (max-width: 375px) {
+            @apply text-[24px];
+        }
     }
     .text-fourtytwo {
         @apply leading-[120%] text-[42px];

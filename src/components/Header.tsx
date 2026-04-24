@@ -1,20 +1,38 @@
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export default function Header() {
-    const [exist, setExist] = useState(false);
+    const [exist, setExist] = useState<boolean | null>(null);
     const [name, setName] = useState<string | null>('');
     const [drop, setDrop] = useState(false);
     const router = useRouter();
+    const toggleRef = useRef<HTMLButtonElement>(null);
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (token) {
             setExist(true);
             setName(localStorage.getItem('name')); // 조건 안으로 이동
+        } else if (!token) {
+            setExist(false);
         }
     }, []);
+    useEffect(() => {
+        const handleClick = (e: MouseEvent) => {
+            if (toggleRef.current && !toggleRef.current.contains(e.target as Node)) {
+                setDrop(false);
+            }
+        };
+        document.addEventListener('click', handleClick);
+        return () => {
+            document.removeEventListener('click', handleClick);
+        };
+    }, []);
 
+    if (exist === null)
+        return (
+            <div className="bg-black h-[113px] py-8" /> // 빈 헤더 (레이아웃 유지)
+        );
     return (
         <div className="bg-black h-[113px] py-8">
             {exist ? (
@@ -34,7 +52,7 @@ export default function Header() {
                             ⭐️즐겨찾기
                         </button>
                         <div className="relative">
-                            <button className="flex gap-1" onClick={() => setDrop((prev) => !prev)}>
+                            <button ref={toggleRef} className="flex gap-1" onClick={() => setDrop((prev) => !prev)}>
                                 <div className="relative w-5 h-5">
                                     <Image src="/home/icons/myprofile.png" fill alt="유저" />
                                 </div>
